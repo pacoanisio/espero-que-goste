@@ -14,6 +14,42 @@
 ================================================== */
 
 body {
+
+    min-height: 100vh;
+
+    background-color: #000;
+
+    color: #fff;
+
+    font-family: "Playfair Display", serif;
+
+    overflow-x: hidden;
+
+    padding: 20px;
+}
+
+
+/* ==================================================
+   JOGO
+================================================== */
+
+.jogo {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+}
+
+
+/* ==================================================
+   TELAS
+================================================== */
+
+.tela {
+
+    width: 100%;
+
     min-height: 100vh;
 
     display: flex;
@@ -22,95 +58,48 @@ body {
 
     align-items: center;
 
-    background-color: #000;
+    padding: 50px 20px;
 
-    font-family: 'Playfair Display', serif;
-
-    color: #000;
-
-    padding: 20px;
-
-    transition: background-color 0.5s ease;
 }
 
 
 /* ==================================================
-   ESCONDER TELAS
+   ESCONDER
 ================================================== */
 
 .escondido {
+
     display: none !important;
+
 }
 
 
 /* ==================================================
-   PLACAR
+   CONTEÚDO
 ================================================== */
 
-.placar {
-    position: fixed;
+.conteudo {
 
-    left: 20px;
+    width: 100%;
 
-    top: 50%;
+    max-width: 650px;
 
-    transform: translateY(-50%);
-
-    background-color: #fff;
-
-    padding: 15px 18px;
-
-    border-radius: 12px;
+    margin: 0 auto;
 
     text-align: center;
 
-    min-width: 105px;
-
-    box-shadow:
-        0 8px 25px rgba(255, 255, 255, 0.10);
-
-    z-index: 100;
 }
 
 
-.placar-titulo {
-    font-size: 14px;
+/* ==================================================
+   CAIXA
+================================================== */
 
-    color: #555;
+.conteudo {
 
-    margin-bottom: 8px;
-}
-
-
-.acertos,
-.erros {
-    font-size: 17px;
-
-    font-weight: 600;
+    background-color: #fff;
 
     color: #000;
-
-    margin: 4px 0;
-}
-
-
-/* ==================================================
-   CONTAINER
-================================================== */
-
-.tela {
-    width: 100%;
-
-    max-width: 680px;
-
-    text-align: center;
-}
-
-
-.caixa {
-    width: 100%;
-
-    background-color: #fff;
 
     padding: 50px 35px;
 
@@ -119,7 +108,42 @@ body {
     box-shadow:
         0 20px 50px rgba(255, 255, 255, 0.08);
 
-    animation: aparecer 0.7s ease;
+    animation: aparecer 0.6s ease;
+
+}
+
+
+/* ==================================================
+   TÍTULOS
+================================================== */
+
+h1 {
+
+    font-size: clamp(2.2rem, 8vw, 4rem);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+
+    color: #000;
+
+}
+
+
+h2 {
+
+    font-size: clamp(1.8rem, 7vw, 3rem);
+
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    margin-bottom: 30px;
+
+    color: #000;
+
 }
 
 
@@ -127,50 +151,49 @@ body {
    TEXTOS
 ================================================== */
 
-h1 {
-    font-size: 38px;
-
-    color: #000;
-
-    margin-bottom: 25px;
-}
-
-
-h2 {
-    font-size: 30px;
-
-    color: #000;
-
-    margin-bottom: 25px;
-}
-
-
 p {
-    font-size: 19px;
 
-    line-height: 1.7;
+    font-size: 1.05rem;
+
+    line-height: 1.8;
 
     color: #222;
 
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+
 }
 
 
-/* ==================================================
-   TEXTO DE INSTRUÇÃO
-================================================== */
+.subtitulo {
 
-.instrucao {
-    font-size: 16px;
+    font-size: 1.25rem;
 
-    color: #666;
+    margin-bottom: 25px;
 
-    margin-bottom: 20px;
 }
 
 
-.instrucao strong {
-    color: #000;
+.descricao {
+
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+
+    color: #444;
+
+    margin-bottom: 40px;
+
+}
+
+
+.destaque {
+
+    font-size: 1.2rem;
+
+    margin-top: 30px;
+
+    margin-bottom: 35px;
+
 }
 
 
@@ -179,11 +202,12 @@ p {
 ================================================== */
 
 .botao {
+
     display: block;
 
     width: 100%;
 
-    padding: 16px 20px;
+    padding: 15px 25px;
 
     border: 1px solid #000;
 
@@ -193,32 +217,48 @@ p {
 
     color: #fff;
 
-    font-family: 'Playfair Display', serif;
+    font-family: inherit;
 
-    font-size: 17px;
+    font-size: 1rem;
+
+    letter-spacing: 1px;
 
     cursor: pointer;
 
     transition:
-        transform 0.25s ease,
         background-color 0.25s ease,
-        color 0.25s ease;
+        color 0.25s ease,
+        transform 0.2s ease;
+
 }
 
 
 .botao:hover {
-    transform: scale(1.03);
 
     background-color: #fff;
 
     color: #000;
+
+    transform: scale(1.02);
+
+}
+
+
+.botao:active {
+
+    transform: scale(0.98);
+
 }
 
 
 .botao:disabled {
-    cursor: default;
 
     opacity: 0.35;
+
+    cursor: not-allowed;
+
+    transform: none;
+
 }
 
 
@@ -227,13 +267,30 @@ p {
 ================================================== */
 
 .cabecalhoRodada {
+
     margin-bottom: 15px;
 
-    font-size: 13px;
-
-    letter-spacing: 4px;
-
     color: #777;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 5px;
+
+}
+
+
+/* ==================================================
+   INSTRUÇÃO
+================================================== */
+
+.instrucao {
+
+    font-size: 0.95rem;
+
+    color: #666;
+
+    margin-bottom: 25px;
+
 }
 
 
@@ -242,15 +299,17 @@ p {
 ================================================== */
 
 .opcoes {
+
     width: 100%;
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 15px;
+    gap: 18px;
 
-    margin: 20px auto;
+    margin-top: 25px;
+
 }
 
 
@@ -259,6 +318,7 @@ p {
 ================================================== */
 
 .opcaoMusica {
+
     width: 100%;
 
     padding: 22px;
@@ -275,13 +335,16 @@ p {
         border-color 0.25s ease,
         background-color 0.25s ease,
         transform 0.25s ease;
+
 }
 
 
 .opcaoMusica:hover {
+
     border-color: #000;
 
     transform: translateY(-2px);
+
 }
 
 
@@ -290,38 +353,34 @@ p {
 ================================================== */
 
 .opcaoMusica.selecionada {
+
     border: 2px solid #000;
 
-    background-color: #f1f1f1;
+    background-color: #eeeeee;
 
     transform: scale(1.02);
-}
 
-
-.opcaoMusica.selecionada
-.btnSelecionar {
-    background-color: #000;
-
-    color: #fff;
 }
 
 
 /* ==================================================
-   NOME DA MÚSICA
+   NOME
 ================================================== */
 
 .nomeMusica {
+
     display: block;
 
     color: #000;
 
-    font-size: 21px;
+    font-size: 1.3rem;
 
     font-weight: 600;
 
     line-height: 1.3;
 
     margin-bottom: 7px;
+
 }
 
 
@@ -330,37 +389,45 @@ p {
 ================================================== */
 
 .artista {
+
     display: block;
 
     color: #777;
 
-    font-size: 15px;
+    font-size: 0.95rem;
 
     margin-bottom: 15px;
+
 }
 
 
 /* ==================================================
-   OUVIR MÚSICA
+   OUVIR
 ================================================== */
 
 .linkMusica {
+
     display: inline-block;
 
     margin-bottom: 15px;
 
-    color: #000;
+    color: #222;
 
-    font-size: 14px;
+    font-family: inherit;
+
+    font-size: 0.9rem;
 
     text-decoration: underline;
 
     cursor: pointer;
+
 }
 
 
 .linkMusica:hover {
-    opacity: 0.5;
+
+    color: #777;
+
 }
 
 
@@ -369,6 +436,7 @@ p {
 ================================================== */
 
 .btnSelecionar {
+
     display: block;
 
     width: 100%;
@@ -383,29 +451,36 @@ p {
 
     color: #000;
 
-    font-family: 'Playfair Display', serif;
+    font-family: inherit;
 
-    font-size: 15px;
+    font-size: 0.95rem;
+
+    letter-spacing: 1px;
 
     cursor: pointer;
 
     transition:
         background-color 0.2s ease,
         color 0.2s ease;
+
 }
 
 
 .btnSelecionar:hover {
+
     background-color: #000;
 
     color: #fff;
+
 }
 
 
-.btnSelecionar:disabled {
-    cursor: default;
+.opcaoMusica.selecionada .btnSelecionar {
 
-    opacity: 0.5;
+    background-color: #000;
+
+    color: #fff;
+
 }
 
 
@@ -413,8 +488,10 @@ p {
    BOTÃO ESCOLHER
 ================================================== */
 
-.escolherFinal {
+.btnEscolherFinal {
+
     margin-top: 25px;
+
 }
 
 
@@ -423,15 +500,17 @@ p {
 ================================================== */
 
 .resultado {
+
     width: 100%;
 
-    margin-top: 25px;
+    margin-top: 30px;
 
     display: flex;
 
     justify-content: center;
 
     align-items: center;
+
 }
 
 
@@ -440,65 +519,165 @@ p {
 ================================================== */
 
 .imagem {
-    width: 100%;
-
-    max-width: 420px;
-
-    max-height: 350px;
-
-    object-fit: contain;
 
     display: block;
+
+    width: 100%;
+
+    max-width: 500px;
+
+    max-height: 500px;
+
+    height: auto;
+
+    object-fit: contain;
 
     margin: 20px auto;
 
     border-radius: 12px;
 
+    /*
+       NÃO aplicar filtro.
+       As imagens permanecem coloridas.
+    */
+
+    filter: none !important;
+
+    -webkit-filter: none !important;
+
+    opacity: 1 !important;
+
+    mix-blend-mode: normal !important;
+
 }
 
 
 /* ==================================================
-   BOTÃO PRÓXIMO
+   PRÓXIMO
 ================================================== */
 
 .proximo {
-    margin-top: 25px;
+
+    margin-top: 30px;
+
 }
 
 
 /* ==================================================
-   TEXTO DESTAQUE
+   PLACAR DURANTE O JOGO
 ================================================== */
 
-.destaque {
-    font-size: 21px;
+.placarDuranteJogo {
 
-    line-height: 1.7;
+    position: fixed;
 
-    margin-bottom: 35px;
+    top: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 22px;
+
+    padding: 10px 20px;
+
+    background-color: #fff;
+
+    color: #000;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 5px 25px rgba(255, 255, 255, 0.12);
+
+    z-index: 1000;
+
+    font-size: 0.85rem;
+
+}
+
+
+.placarItem {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    white-space: nowrap;
+
+}
+
+
+.placarNumero {
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+}
+
+
+.placarDivisor {
+
+    width: 1px;
+
+    height: 20px;
+
+    background-color: #ccc;
+
 }
 
 
 /* ==================================================
-   RESULTADO FINAL
+   PLACAR FINAL
 ================================================== */
 
 .placarFinal {
-    margin: 30px auto;
 
-    text-align: center;
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 70px;
+
+    margin: 35px auto;
+
 }
 
 
-.placarFinal p {
-    margin-bottom: 10px;
+.resultadoNumero {
 
-    font-size: 20px;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 1rem;
+
 }
 
 
-.placarFinal strong {
-    font-size: 32px;
+.numero {
+
+    font-size: 3.5rem;
+
+    line-height: 1;
+
+    font-weight: 500;
+
 }
 
 
@@ -507,27 +686,39 @@ p {
 ================================================== */
 
 .mensagemFinal {
-    width: 100%;
+
+    max-width: 700px;
 
     text-align: center;
+
 }
 
 
 .mensagemFinal h2 {
+
     margin-top: 35px;
 
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+
 }
 
 
 .mensagemFinal p {
-    max-width: 580px;
+
+    max-width: 600px;
 
     margin-left: auto;
 
     margin-right: auto;
 
     margin-bottom: 25px;
+
+    color: #222;
+
+    font-size: 1.05rem;
+
+    line-height: 1.9;
+
 }
 
 
@@ -536,6 +727,7 @@ p {
 ================================================== */
 
 .videoFinal {
+
     display: block;
 
     width: 100%;
@@ -551,6 +743,19 @@ p {
     border-radius: 12px;
 
     background-color: #000;
+
+    /*
+       Mantém o vídeo colorido.
+    */
+
+    filter: none !important;
+
+    -webkit-filter: none !important;
+
+    opacity: 1 !important;
+
+    mix-blend-mode: normal !important;
+
 }
 
 
@@ -561,15 +766,19 @@ p {
 @keyframes aparecer {
 
     from {
+
         opacity: 0;
 
         transform: translateY(20px);
+
     }
 
     to {
+
         opacity: 1;
 
         transform: translateY(0);
+
     }
 
 }
@@ -582,99 +791,116 @@ p {
 @media (max-width: 600px) {
 
     body {
-        padding: 15px;
 
-        padding-top: 80px;
+        padding: 10px;
+
+        padding-top: 70px;
+
     }
 
 
-    .placar {
-        top: 15px;
+    .tela {
 
-        left: 50%;
+        padding: 25px 8px;
 
-        transform: translateX(-50%);
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 12px;
-
-        padding: 9px 15px;
-
-        min-width: auto;
     }
 
 
-    .placar-titulo {
-        display: none;
-    }
+    .conteudo {
 
+        padding: 35px 18px;
 
-    .acertos,
-    .erros {
-        margin: 0;
+        border-radius: 14px;
 
-        font-size: 15px;
-    }
-
-
-    .caixa {
-        padding: 35px 20px;
     }
 
 
     h1 {
-        font-size: 30px;
+
+        font-size: 2.3rem;
+
     }
 
 
     h2 {
-        font-size: 27px;
+
+        font-size: 2rem;
+
     }
 
 
     p {
-        font-size: 17px;
 
-        line-height: 1.6;
-    }
+        font-size: 1rem;
 
+        line-height: 1.7;
 
-    .instrucao {
-        font-size: 15px;
     }
 
 
     .opcaoMusica {
+
         padding: 20px 16px;
+
     }
 
 
     .nomeMusica {
-        font-size: 19px;
+
+        font-size: 1.2rem;
+
     }
 
 
-    .botao {
-        font-size: 15px;
+    .placarDuranteJogo {
 
-        padding: 14px 12px;
+        top: 12px;
+
+        gap: 15px;
+
+        padding: 8px 15px;
+
+        font-size: 0.8rem;
+
     }
 
 
-    .videoFinal {
-        max-width: 100%;
+    .placarNumero {
 
-        border-radius: 8px;
+        font-size: 1rem;
+
+    }
+
+
+    .placarFinal {
+
+        gap: 45px;
+
+    }
+
+
+    .numero {
+
+        font-size: 3rem;
+
     }
 
 
     .mensagemFinal p {
-        font-size: 17px;
 
-        line-height: 1.7;
+        font-size: 1rem;
+
+        line-height: 1.8;
+
+    }
+
+
+    .videoFinal {
+
+        width: 100%;
+
+        border-radius: 8px;
+
     }
 
 }
