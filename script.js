@@ -7,10 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const rodadas = [
 
-        /* =========================
-           RODADA 1
-        ========================= */
-
         {
             musicas: [
 
@@ -32,10 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
 
-        /* =========================
-           RODADA 2
-        ========================= */
-
         {
             musicas: [
 
@@ -56,10 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
-
-        /* =========================
-           RODADA 3
-        ========================= */
 
         {
             musicas: [
@@ -121,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       SELEÇÃO ATUAL
+       MÚSICA SELECIONADA
     ================================================== */
 
     let musicaSelecionada = null;
@@ -134,29 +122,33 @@ document.addEventListener("DOMContentLoaded", function () {
        TELAS
     ================================================== */
 
-    const inicio =
-        document.getElementById("inicio");
+    const telas = {
 
-    const regras =
-        document.getElementById("regras");
+        inicio:
+            document.getElementById("inicio"),
 
-    const rodada1 =
-        document.getElementById("rodada1");
+        regras:
+            document.getElementById("regras"),
 
-    const rodada2 =
-        document.getElementById("rodada2");
+        rodada1:
+            document.getElementById("rodada1"),
 
-    const rodada3 =
-        document.getElementById("rodada3");
+        rodada2:
+            document.getElementById("rodada2"),
 
-    const final1 =
-        document.getElementById("final1");
+        rodada3:
+            document.getElementById("rodada3"),
 
-    const final2 =
-        document.getElementById("final2");
+        final1:
+            document.getElementById("final1"),
 
-    const final =
-        document.getElementById("final");
+        final2:
+            document.getElementById("final2"),
+
+        final:
+            document.getElementById("final")
+
+    };
 
 
 
@@ -170,24 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnComecar =
         document.getElementById("btnComecar");
 
-    const btnEscolher1 =
-        document.getElementById("btnEscolher1");
-
-    const btnEscolher2 =
-        document.getElementById("btnEscolher2");
-
-    const btnEscolher3 =
-        document.getElementById("btnEscolher3");
-
-    const btnProximo1 =
-        document.getElementById("btnProximo1");
-
-    const btnProximo2 =
-        document.getElementById("btnProximo2");
-
-    const btnProximo3 =
-        document.getElementById("btnProximo3");
-
     const btnContinuar =
         document.getElementById("btnContinuar");
 
@@ -197,47 +171,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       PLACAR
+       PLACAR DURANTE O JOGO
     ================================================== */
 
-    function atualizarPlacar() {
-
-        const elementoAcertos =
-            document.getElementById("acertos");
-
-        const elementoErros =
-            document.getElementById("erros");
-
-        const placarAcertos =
-            document.getElementById("placarAcertos");
-
-        const placarErros =
-            document.getElementById("placarErros");
-
-
-        elementoAcertos.textContent =
-            acertos;
-
-        elementoErros.textContent =
-            erros;
-
-
-        if (placarAcertos) {
-
-            placarAcertos.textContent =
-                acertos;
-
-        }
-
-
-        if (placarErros) {
-
-            placarErros.textContent =
-                erros;
-
-        }
-
-    }
+    const placarDuranteJogo =
+        document.getElementById(
+            "placarDuranteJogo"
+        );
 
 
 
@@ -247,34 +187,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mostrarTela(tela) {
 
-        const telas = [
+        Object.values(telas).forEach(
+            function (elemento) {
 
-            inicio,
+                elemento.classList.add(
+                    "escondido"
+                );
 
-            regras,
-
-            rodada1,
-
-            rodada2,
-
-            rodada3,
-
-            final1,
-
-            final2,
-
-            final
-
-        ];
-
-
-        telas.forEach(function (elemento) {
-
-            elemento.classList.add(
-                "escondido"
-            );
-
-        });
+            }
+        );
 
 
         tela.classList.remove(
@@ -286,10 +207,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
+       ATUALIZAR PLACAR
+    ================================================== */
+
+    function atualizarPlacar() {
+
+        const acertosDuranteJogo =
+            document.getElementById(
+                "acertosDuranteJogo"
+            );
+
+
+        const errosDuranteJogo =
+            document.getElementById(
+                "errosDuranteJogo"
+            );
+
+
+        const placarAcertos =
+            document.getElementById(
+                "placarAcertos"
+            );
+
+
+        const placarErros =
+            document.getElementById(
+                "placarErros"
+            );
+
+
+        acertosDuranteJogo.textContent =
+            acertos;
+
+
+        errosDuranteJogo.textContent =
+            erros;
+
+
+        placarAcertos.textContent =
+            acertos;
+
+
+        placarErros.textContent =
+            erros;
+
+    }
+
+
+
+    /* ==================================================
        CRIAR RODADA
     ================================================== */
 
     function criarRodada(numeroRodada) {
+
 
         rodadaAtual =
             numeroRodada;
@@ -299,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
             null;
 
 
-        const numero =
+        const numeroTela =
             numeroRodada + 1;
 
 
@@ -309,36 +280,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const container =
             document.getElementById(
-                "opcoesRodada" + numero
+                "opcoesRodada" + numeroTela
             );
 
 
         const resultado =
             document.getElementById(
-                "resultado" + numero
+                "resultado" + numeroTela
             );
 
 
         const btnEscolher =
             document.getElementById(
-                "btnEscolher" + numero
+                "btnEscolher" + numeroTela
             );
 
 
         const btnProximo =
             document.getElementById(
-                "btnProximo" + numero
+                "btnProximo" + numeroTela
             );
 
 
-        /* Limpa tudo */
+
+        /* Limpa */
 
         container.innerHTML = "";
 
         resultado.innerHTML = "";
 
 
-        /* Reseta botão ESCOLHER */
+
+        /* Esconde botões */
 
         btnEscolher.classList.add(
             "escondido"
@@ -348,15 +321,14 @@ document.addEventListener("DOMContentLoaded", function () {
             true;
 
 
-        /* Esconde PRÓXIMO */
-
         btnProximo.classList.add(
             "escondido"
         );
 
 
+
         /* ==================================================
-           CRIA AS MÚSICAS
+           CRIA CARTÕES
         ================================================== */
 
         rodada.musicas.forEach(
@@ -408,7 +380,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-                /* LINK OUVIR */
+                /* ==================================================
+                   OUVIR
+                ================================================== */
 
                 const ouvir =
                     document.createElement(
@@ -437,7 +411,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-                /* BOTÃO SELECIONAR */
+                /* ==================================================
+                   SELECIONAR
+                ================================================== */
 
                 const selecionar =
                     document.createElement(
@@ -462,12 +438,46 @@ document.addEventListener("DOMContentLoaded", function () {
                     "click",
                     function () {
 
-                        selecionarMusica(
-                            musica,
-                            bloco,
-                            container,
-                            btnEscolher
+
+                        /* Remove seleção anterior */
+
+                        container
+                            .querySelectorAll(
+                                ".opcaoMusica"
+                            )
+                            .forEach(
+                                function (item) {
+
+                                    item.classList.remove(
+                                        "selecionada"
+                                    );
+
+                                }
+                            );
+
+
+                        /* Seleciona este */
+
+                        bloco.classList.add(
+                            "selecionada"
                         );
+
+
+                        /* Guarda música */
+
+                        musicaSelecionada =
+                            musica;
+
+
+                        /* Mostra ESCOLHER */
+
+                        btnEscolher.classList.remove(
+                            "escondido"
+                        );
+
+
+                        btnEscolher.disabled =
+                            false;
 
                     }
                 );
@@ -505,72 +515,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       SELECIONAR MÚSICA
-    ================================================== */
-
-    function selecionarMusica(
-        musica,
-        bloco,
-        container,
-        btnEscolher
-    ) {
-
-
-        /* Remove seleção anterior */
-
-        const blocos =
-            container.querySelectorAll(
-                ".opcaoMusica"
-            );
-
-
-        blocos.forEach(
-            function (item) {
-
-                item.classList.remove(
-                    "selecionada"
-                );
-
-            }
-        );
-
-
-        /* Marca a escolhida */
-
-        bloco.classList.add(
-            "selecionada"
-        );
-
-
-        /* Guarda música */
-
-        musicaSelecionada =
-            musica;
-
-
-
-        /* Mostra botão ESCOLHER */
-
-        btnEscolher.classList.remove(
-            "escondido"
-        );
-
-
-        btnEscolher.disabled =
-            false;
-
-    }
-
-
-
-    /* ==================================================
        CONFIRMAR ESCOLHA
     ================================================== */
 
     function confirmarEscolha() {
 
-
-        /* Segurança */
 
         if (
             musicaSelecionada === null
@@ -581,50 +530,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        const numero =
+        const numeroTela =
             rodadaAtual + 1;
 
 
         const container =
             document.getElementById(
-                "opcoesRodada" + numero
-            );
-
-
-        const resultado =
-            document.getElementById(
-                "resultado" + numero
+                "opcoesRodada" + numeroTela
             );
 
 
         const btnEscolher =
             document.getElementById(
-                "btnEscolher" + numero
+                "btnEscolher" + numeroTela
             );
 
 
         const btnProximo =
             document.getElementById(
-                "btnProximo" + numero
+                "btnProximo" + numeroTela
             );
 
 
-        /* Impede novas escolhas */
 
-        const botoes =
-            container.querySelectorAll(
+        /* Impede nova escolha */
+
+        container
+            .querySelectorAll(
                 ".btnSelecionar"
+            )
+            .forEach(
+                function (botao) {
+
+                    botao.disabled =
+                        true;
+
+                }
             );
-
-
-        botoes.forEach(
-            function (botao) {
-
-                botao.disabled =
-                    true;
-
-            }
-        );
 
 
         btnEscolher.disabled =
@@ -633,7 +575,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /* ==================================================
-           ATUALIZA PLACAR
+           PLACAR
         ================================================== */
 
         if (
@@ -659,8 +601,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         mostrarResultado(
             musicaSelecionada.correta,
-            rodadaAtual,
-            resultado
+            rodadaAtual
         );
 
 
@@ -681,16 +622,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mostrarResultado(
         acertou,
-        numeroRodada,
-        resultado
+        numeroRodada
     ) {
+
+
+        const resultado =
+            document.getElementById(
+                "resultado" +
+                (numeroRodada + 1)
+            );
 
 
         let imagem;
 
 
-
-        /* RODADA 1 */
 
         if (
             numeroRodada === 0
@@ -704,9 +649,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-
-        /* RODADA 2 */
-
         else if (
             numeroRodada === 1
         ) {
@@ -718,9 +660,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
-
-        /* RODADA 3 */
 
         else {
 
@@ -746,7 +685,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       INÍCIO
+       SIMBORA
     ================================================== */
 
     btnSimbora.addEventListener(
@@ -754,7 +693,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function () {
 
             mostrarTela(
-                regras
+                telas.regras
             );
 
         }
@@ -771,8 +710,6 @@ document.addEventListener("DOMContentLoaded", function () {
         function () {
 
 
-            /* Zera placar */
-
             acertos = 0;
 
             erros = 0;
@@ -781,11 +718,16 @@ document.addEventListener("DOMContentLoaded", function () {
             atualizarPlacar();
 
 
+            placarDuranteJogo.classList.remove(
+                "escondido"
+            );
+
+
             criarRodada(0);
 
 
             mostrarTela(
-                rodada1
+                telas.rodada1
             );
 
         }
@@ -797,14 +739,12 @@ document.addEventListener("DOMContentLoaded", function () {
        ESCOLHER - RODADA 1
     ================================================== */
 
-    btnEscolher1.addEventListener(
-        "click",
-        function () {
-
-            confirmarEscolha();
-
-        }
-    );
+    document
+        .getElementById("btnEscolher1")
+        .addEventListener(
+            "click",
+            confirmarEscolha
+        );
 
 
 
@@ -812,14 +752,12 @@ document.addEventListener("DOMContentLoaded", function () {
        ESCOLHER - RODADA 2
     ================================================== */
 
-    btnEscolher2.addEventListener(
-        "click",
-        function () {
-
-            confirmarEscolha();
-
-        }
-    );
+    document
+        .getElementById("btnEscolher2")
+        .addEventListener(
+            "click",
+            confirmarEscolha
+        );
 
 
 
@@ -827,14 +765,12 @@ document.addEventListener("DOMContentLoaded", function () {
        ESCOLHER - RODADA 3
     ================================================== */
 
-    btnEscolher3.addEventListener(
-        "click",
-        function () {
-
-            confirmarEscolha();
-
-        }
-    );
+    document
+        .getElementById("btnEscolher3")
+        .addEventListener(
+            "click",
+            confirmarEscolha
+        );
 
 
 
@@ -842,19 +778,20 @@ document.addEventListener("DOMContentLoaded", function () {
        PRÓXIMO - RODADA 1
     ================================================== */
 
-    btnProximo1.addEventListener(
-        "click",
-        function () {
+    document
+        .getElementById("btnProximo1")
+        .addEventListener(
+            "click",
+            function () {
 
-            criarRodada(1);
+                criarRodada(1);
 
+                mostrarTela(
+                    telas.rodada2
+                );
 
-            mostrarTela(
-                rodada2
-            );
-
-        }
-    );
+            }
+        );
 
 
 
@@ -862,19 +799,20 @@ document.addEventListener("DOMContentLoaded", function () {
        PRÓXIMO - RODADA 2
     ================================================== */
 
-    btnProximo2.addEventListener(
-        "click",
-        function () {
+    document
+        .getElementById("btnProximo2")
+        .addEventListener(
+            "click",
+            function () {
 
-            criarRodada(2);
+                criarRodada(2);
 
+                mostrarTela(
+                    telas.rodada3
+                );
 
-            mostrarTela(
-                rodada3
-            );
-
-        }
-    );
+            }
+        );
 
 
 
@@ -882,25 +820,29 @@ document.addEventListener("DOMContentLoaded", function () {
        PRÓXIMO - RODADA 3
     ================================================== */
 
-    btnProximo3.addEventListener(
-        "click",
-        function () {
+    document
+        .getElementById("btnProximo3")
+        .addEventListener(
+            "click",
+            function () {
 
-            /*
-             * Depois da terceira rodada,
-             * não vai direto para a mensagem.
-             *
-             * Primeiro aparece a pergunta:
-             *
-             * "Você deve estar se perguntando..."
-             */
 
-            mostrarTela(
-                final1
-            );
+                /*
+                 * Depois da terceira rodada:
+                 * pergunta antes da revelação final.
+                 */
 
-        }
-    );
+                placarDuranteJogo.classList.add(
+                    "escondido"
+                );
+
+
+                mostrarTela(
+                    telas.final1
+                );
+
+            }
+        );
 
 
 
@@ -916,7 +858,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             mostrarTela(
-                final2
+                telas.final2
             );
 
         }
@@ -925,26 +867,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       CONTINUAR - MENSAGEM FINAL
+       CONTINUAR - MENSAGEM
     ================================================== */
 
     btnIrMensagem.addEventListener(
         "click",
         function () {
 
+
             mostrarTela(
-                final
+                telas.final
             );
 
 
-            /*
-             * Garante que o vídeo comece
-             * assim que a tela final aparecer.
-             */
-
             const video =
-                document.querySelector(
-                    ".videoFinal"
+                document.getElementById(
+                    "videoFinal"
                 );
 
 
@@ -952,14 +890,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 video.currentTime = 0;
 
+
                 video.play().catch(
                     function () {
+
                         /*
-                         * Alguns navegadores podem
-                         * bloquear autoplay.
+                         * O navegador pode bloquear
+                         * autoplay em alguns casos.
+                         *
                          * Como o vídeo está muted,
-                         * normalmente será permitido.
+                         * normalmente funciona.
                          */
+
                     }
                 );
 
