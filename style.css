@@ -16,46 +16,26 @@
 body {
     min-height: 100vh;
 
-    background-color: #000;
-
-    color: #fff;
-
-    font-family: "Playfair Display", serif;
-
-    overflow-x: hidden;
-}
-
-
-/* ==================================================
-   ÁREA PRINCIPAL
-================================================== */
-
-.jogo {
-    width: 100%;
-    min-height: 100vh;
-}
-
-
-/* ==================================================
-   TELAS
-================================================== */
-
-.tela {
-    width: 100%;
-    min-height: 100vh;
-
     display: flex;
 
     justify-content: center;
 
     align-items: center;
 
-    padding: 40px 20px;
+    background-color: #000;
+
+    font-family: 'Playfair Display', serif;
+
+    color: #000;
+
+    padding: 20px;
+
+    transition: background-color 0.5s ease;
 }
 
 
 /* ==================================================
-   ESCONDER
+   ESCONDER TELAS
 ================================================== */
 
 .escondido {
@@ -64,43 +44,82 @@ body {
 
 
 /* ==================================================
-   CONTEÚDO
+   PLACAR
 ================================================== */
 
-.conteudo {
+.placar {
+    position: fixed;
+
+    left: 20px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background-color: #fff;
+
+    padding: 15px 18px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    min-width: 105px;
+
+    box-shadow:
+        0 8px 25px rgba(255, 255, 255, 0.10);
+
+    z-index: 100;
+}
+
+
+.placar-titulo {
+    font-size: 14px;
+
+    color: #555;
+
+    margin-bottom: 8px;
+}
+
+
+.acertos,
+.erros {
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #000;
+
+    margin: 4px 0;
+}
+
+
+/* ==================================================
+   CONTAINER
+================================================== */
+
+.tela {
     width: 100%;
 
-    max-width: 650px;
-
-    margin: 0 auto;
+    max-width: 680px;
 
     text-align: center;
 }
 
 
-/* ==================================================
-   TÍTULOS
-================================================== */
+.caixa {
+    width: 100%;
 
-h1 {
-    font-size: clamp(2.2rem, 8vw, 4rem);
+    background-color: #fff;
 
-    font-weight: 500;
+    padding: 50px 35px;
 
-    line-height: 1.15;
+    border-radius: 18px;
 
-    margin-bottom: 25px;
-}
+    box-shadow:
+        0 20px 50px rgba(255, 255, 255, 0.08);
 
-
-h2 {
-    font-size: clamp(1.8rem, 7vw, 3rem);
-
-    font-weight: 500;
-
-    line-height: 1.2;
-
-    margin-bottom: 30px;
+    animation: aparecer 0.7s ease;
 }
 
 
@@ -108,30 +127,50 @@ h2 {
    TEXTOS
 ================================================== */
 
-.subtitulo {
-    font-size: 1.25rem;
+h1 {
+    font-size: 38px;
+
+    color: #000;
 
     margin-bottom: 25px;
 }
 
 
-.descricao {
-    font-size: 1.05rem;
+h2 {
+    font-size: 30px;
 
-    line-height: 1.8;
+    color: #000;
 
-    color: #ccc;
-
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
 
-.destaque {
-    font-size: 1.2rem;
+p {
+    font-size: 19px;
 
-    margin-top: 30px;
+    line-height: 1.7;
 
-    margin-bottom: 35px;
+    color: #222;
+
+    margin-bottom: 30px;
+}
+
+
+/* ==================================================
+   TEXTO DE INSTRUÇÃO
+================================================== */
+
+.instrucao {
+    font-size: 16px;
+
+    color: #666;
+
+    margin-bottom: 20px;
+}
+
+
+.instrucao strong {
+    color: #000;
 }
 
 
@@ -140,39 +179,46 @@ h2 {
 ================================================== */
 
 .botao {
-    display: inline-block;
+    display: block;
 
-    padding: 14px 35px;
+    width: 100%;
 
-    border: 1px solid #fff;
+    padding: 16px 20px;
 
-    background-color: transparent;
+    border: 1px solid #000;
+
+    border-radius: 30px;
+
+    background-color: #000;
 
     color: #fff;
 
-    font-family: inherit;
+    font-family: 'Playfair Display', serif;
 
-    font-size: 1rem;
-
-    letter-spacing: 1px;
+    font-size: 17px;
 
     cursor: pointer;
 
     transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease;
 }
 
 
 .botao:hover {
+    transform: scale(1.03);
+
     background-color: #fff;
 
     color: #000;
 }
 
 
-.botao:active {
-    transform: scale(0.98);
+.botao:disabled {
+    cursor: default;
+
+    opacity: 0.35;
 }
 
 
@@ -181,13 +227,13 @@ h2 {
 ================================================== */
 
 .cabecalhoRodada {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
-    color: #aaa;
+    font-size: 13px;
 
-    font-size: 0.8rem;
+    letter-spacing: 4px;
 
-    letter-spacing: 5px;
+    color: #777;
 }
 
 
@@ -202,9 +248,9 @@ h2 {
 
     flex-direction: column;
 
-    gap: 18px;
+    gap: 15px;
 
-    margin-top: 30px;
+    margin: 20px auto;
 }
 
 
@@ -217,16 +263,25 @@ h2 {
 
     padding: 22px;
 
-    border: 1px solid #333;
+    border: 1px solid #ccc;
 
-    background-color: #080808;
+    border-radius: 12px;
+
+    background-color: #fafafa;
 
     text-align: center;
 
     transition:
-        border-color 0.2s ease,
-        background-color 0.2s ease,
-        transform 0.2s ease;
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.opcaoMusica:hover {
+    border-color: #000;
+
+    transform: translateY(-2px);
 }
 
 
@@ -235,16 +290,19 @@ h2 {
 ================================================== */
 
 .opcaoMusica.selecionada {
-    border-color: #fff;
+    border: 2px solid #000;
 
-    background-color: #151515;
+    background-color: #f1f1f1;
 
     transform: scale(1.02);
 }
 
 
-.opcaoMusica.selecionada .nomeMusica {
-    text-decoration: underline;
+.opcaoMusica.selecionada
+.btnSelecionar {
+    background-color: #000;
+
+    color: #fff;
 }
 
 
@@ -255,9 +313,11 @@ h2 {
 .nomeMusica {
     display: block;
 
-    color: #fff;
+    color: #000;
 
-    font-size: 1.3rem;
+    font-size: 21px;
+
+    font-weight: 600;
 
     line-height: 1.3;
 
@@ -272,28 +332,26 @@ h2 {
 .artista {
     display: block;
 
-    color: #999;
+    color: #777;
 
-    font-size: 0.95rem;
+    font-size: 15px;
 
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 }
 
 
 /* ==================================================
-   LINK DA MÚSICA
+   OUVIR MÚSICA
 ================================================== */
 
 .linkMusica {
     display: inline-block;
 
-    margin-bottom: 16px;
+    margin-bottom: 15px;
 
-    color: #bbb;
+    color: #000;
 
-    font-family: inherit;
-
-    font-size: 0.9rem;
+    font-size: 14px;
 
     text-decoration: underline;
 
@@ -302,7 +360,7 @@ h2 {
 
 
 .linkMusica:hover {
-    color: #fff;
+    opacity: 0.5;
 }
 
 
@@ -317,17 +375,17 @@ h2 {
 
     padding: 12px;
 
-    border: 1px solid #555;
+    border: 1px solid #000;
 
-    background-color: transparent;
+    border-radius: 25px;
 
-    color: #fff;
+    background-color: #fff;
 
-    font-family: inherit;
+    color: #000;
 
-    font-size: 0.95rem;
+    font-family: 'Playfair Display', serif;
 
-    letter-spacing: 1px;
+    font-size: 15px;
 
     cursor: pointer;
 
@@ -338,18 +396,16 @@ h2 {
 
 
 .btnSelecionar:hover {
-    background-color: #fff;
+    background-color: #000;
 
-    color: #000;
+    color: #fff;
 }
 
 
-.opcaoMusica.selecionada .btnSelecionar {
-    background-color: #fff;
+.btnSelecionar:disabled {
+    cursor: default;
 
-    color: #000;
-
-    border-color: #fff;
+    opacity: 0.5;
 }
 
 
@@ -358,22 +414,7 @@ h2 {
 ================================================== */
 
 .escolherFinal {
-    display: block;
-
-    width: 100%;
-
-    margin-top: 30px;
-}
-
-
-/* ==================================================
-   BOTÃO ESCOLHER DESABILITADO
-================================================== */
-
-.escolherFinal:disabled {
-    opacity: 0.35;
-
-    cursor: not-allowed;
+    margin-top: 25px;
 }
 
 
@@ -384,7 +425,7 @@ h2 {
 .resultado {
     width: 100%;
 
-    margin-top: 30px;
+    margin-top: 25px;
 
     display: flex;
 
@@ -395,10 +436,107 @@ h2 {
 
 
 /* ==================================================
-   IMAGEM
+   IMAGENS
 ================================================== */
 
 .imagem {
+    width: 100%;
+
+    max-width: 420px;
+
+    max-height: 350px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 20px auto;
+
+    border-radius: 12px;
+
+    filter: grayscale(100%);
+}
+
+
+/* ==================================================
+   BOTÃO PRÓXIMO
+================================================== */
+
+.proximo {
+    margin-top: 25px;
+}
+
+
+/* ==================================================
+   TEXTO DESTAQUE
+================================================== */
+
+.destaque {
+    font-size: 21px;
+
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+}
+
+
+/* ==================================================
+   RESULTADO FINAL
+================================================== */
+
+.placarFinal {
+    margin: 30px auto;
+
+    text-align: center;
+}
+
+
+.placarFinal p {
+    margin-bottom: 10px;
+
+    font-size: 20px;
+}
+
+
+.placarFinal strong {
+    font-size: 32px;
+}
+
+
+/* ==================================================
+   MENSAGEM FINAL
+================================================== */
+
+.mensagemFinal {
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.mensagemFinal h2 {
+    margin-top: 35px;
+
+    margin-bottom: 30px;
+}
+
+
+.mensagemFinal p {
+    max-width: 580px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==================================================
+   VÍDEO FINAL
+================================================== */
+
+.videoFinal {
     display: block;
 
     width: 100%;
@@ -408,155 +546,33 @@ h2 {
     height: auto;
 
     margin: 0 auto;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background-color: #000;
 }
 
 
 /* ==================================================
-   BOTÃO PRÓXIMO
+   ANIMAÇÃO
 ================================================== */
 
-.proximo {
-    margin-top: 30px;
-}
+@keyframes aparecer {
 
+    from {
+        opacity: 0;
 
-/* ==================================================
-   PLACAR FINAL
-================================================== */
+        transform: translateY(20px);
+    }
 
-.placar {
-    display: flex;
+    to {
+        opacity: 1;
 
-    justify-content: center;
+        transform: translateY(0);
+    }
 
-    align-items: center;
-
-    gap: 70px;
-
-    margin-top: 40px;
-}
-
-
-.placar div {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 8px;
-}
-
-
-.numero {
-    font-size: 3.5rem;
-
-    line-height: 1;
-}
-
-
-/* ==================================================
-   PLACAR DURANTE O JOGO
-================================================== */
-
-.placarDuranteJogo {
-    position: fixed;
-
-    top: 20px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 25px;
-
-    padding: 10px 25px;
-
-    border: 1px solid #333;
-
-    background-color: rgba(0, 0, 0, 0.95);
-
-    z-index: 1000;
-
-    font-size: 0.85rem;
-
-    letter-spacing: 1px;
-}
-
-
-.placarItem {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-}
-
-
-.placarNumero {
-    font-size: 1.2rem;
-
-    font-weight: 600;
-}
-
-
-.placarDivisor {
-    width: 1px;
-
-    height: 25px;
-
-    background-color: #333;
-}
-
-
-/* ==================================================
-   MENSAGEM FINAL
-================================================== */
-
-.mensagemFinal {
-    max-width: 650px;
-
-    text-align: center;
-}
-
-
-.mensagemFinal h2 {
-    margin-bottom: 35px;
-}
-
-
-.mensagemFinal p {
-    margin-bottom: 25px;
-
-    color: #ddd;
-
-    font-size: 1.05rem;
-
-    line-height: 1.9;
-}
-
-
-/* ==================================================
-   PLACAR FINAL
-================================================== */
-
-.placarFinal {
-    margin-top: 30px;
-
-    font-size: 1.2rem;
-
-    line-height: 2;
-}
-
-
-.placarFinal strong {
-    font-size: 1.4rem;
 }
 
 
@@ -566,23 +582,69 @@ h2 {
 
 @media (max-width: 600px) {
 
-    .tela {
-        padding: 30px 18px;
+    body {
+        padding: 15px;
+
+        padding-top: 80px;
     }
 
 
-    .conteudo {
-        max-width: 100%;
+    .placar {
+        top: 15px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        padding: 9px 15px;
+
+        min-width: auto;
+    }
+
+
+    .placar-titulo {
+        display: none;
+    }
+
+
+    .acertos,
+    .erros {
+        margin: 0;
+
+        font-size: 15px;
+    }
+
+
+    .caixa {
+        padding: 35px 20px;
     }
 
 
     h1 {
-        font-size: 2.3rem;
+        font-size: 30px;
     }
 
 
     h2 {
-        font-size: 2rem;
+        font-size: 27px;
+    }
+
+
+    p {
+        font-size: 17px;
+
+        line-height: 1.6;
+    }
+
+
+    .instrucao {
+        font-size: 15px;
     }
 
 
@@ -592,40 +654,28 @@ h2 {
 
 
     .nomeMusica {
-        font-size: 1.2rem;
+        font-size: 19px;
     }
 
 
-    .placar {
-        gap: 50px;
+    .botao {
+        font-size: 15px;
+
+        padding: 14px 12px;
     }
 
 
-    .numero {
-        font-size: 3rem;
+    .videoFinal {
+        max-width: 100%;
+
+        border-radius: 8px;
     }
 
 
     .mensagemFinal p {
-        font-size: 1rem;
+        font-size: 17px;
 
-        line-height: 1.8;
-    }
-
-
-    .placarDuranteJogo {
-        top: 15px;
-
-        gap: 18px;
-
-        padding: 8px 18px;
-
-        font-size: 0.75rem;
-    }
-
-
-    .placarNumero {
-        font-size: 1rem;
+        line-height: 1.7;
     }
 
 }
