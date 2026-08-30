@@ -1,0 +1,631 @@
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==================================================
+   CORPO
+================================================== */
+
+body {
+    min-height: 100vh;
+
+    background-color: #000;
+
+    color: #fff;
+
+    font-family: "Playfair Display", serif;
+
+    overflow-x: hidden;
+}
+
+
+/* ==================================================
+   ÁREA PRINCIPAL
+================================================== */
+
+.jogo {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ==================================================
+   TELAS
+================================================== */
+
+.tela {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+
+/* ==================================================
+   ESCONDER
+================================================== */
+
+.escondido {
+    display: none !important;
+}
+
+
+/* ==================================================
+   CONTEÚDO
+================================================== */
+
+.conteudo {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* ==================================================
+   TÍTULOS
+================================================== */
+
+h1 {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+
+h2 {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    margin-bottom: 30px;
+}
+
+
+/* ==================================================
+   TEXTOS
+================================================== */
+
+.subtitulo {
+    font-size: 1.25rem;
+
+    margin-bottom: 25px;
+}
+
+
+.descricao {
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+
+    color: #ccc;
+
+    margin-bottom: 40px;
+}
+
+
+.destaque {
+    font-size: 1.2rem;
+
+    margin-top: 30px;
+
+    margin-bottom: 35px;
+}
+
+
+/* ==================================================
+   BOTÕES
+================================================== */
+
+.botao {
+    display: inline-block;
+
+    padding: 14px 35px;
+
+    border: 1px solid #fff;
+
+    background-color: transparent;
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.botao:hover {
+    background-color: #fff;
+
+    color: #000;
+}
+
+
+.botao:active {
+    transform: scale(0.98);
+}
+
+
+/* ==================================================
+   CABEÇALHO DA RODADA
+================================================== */
+
+.cabecalhoRodada {
+    margin-bottom: 20px;
+
+    color: #aaa;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 5px;
+}
+
+
+/* ==================================================
+   OPÇÕES
+================================================== */
+
+.opcoes {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    margin-top: 30px;
+}
+
+
+/* ==================================================
+   CARTÃO DA MÚSICA
+================================================== */
+
+.opcaoMusica {
+    width: 100%;
+
+    padding: 22px;
+
+    border: 1px solid #333;
+
+    background-color: #080808;
+
+    text-align: center;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* ==================================================
+   MÚSICA SELECIONADA
+================================================== */
+
+.opcaoMusica.selecionada {
+    border-color: #fff;
+
+    background-color: #151515;
+
+    transform: scale(1.02);
+}
+
+
+.opcaoMusica.selecionada .nomeMusica {
+    text-decoration: underline;
+}
+
+
+/* ==================================================
+   NOME DA MÚSICA
+================================================== */
+
+.nomeMusica {
+    display: block;
+
+    color: #fff;
+
+    font-size: 1.3rem;
+
+    line-height: 1.3;
+
+    margin-bottom: 7px;
+}
+
+
+/* ==================================================
+   ARTISTA
+================================================== */
+
+.artista {
+    display: block;
+
+    color: #999;
+
+    font-size: 0.95rem;
+
+    margin-bottom: 16px;
+}
+
+
+/* ==================================================
+   LINK DA MÚSICA
+================================================== */
+
+.linkMusica {
+    display: inline-block;
+
+    margin-bottom: 16px;
+
+    color: #bbb;
+
+    font-family: inherit;
+
+    font-size: 0.9rem;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+
+.linkMusica:hover {
+    color: #fff;
+}
+
+
+/* ==================================================
+   BOTÃO SELECIONAR
+================================================== */
+
+.btnSelecionar {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #555;
+
+    background-color: transparent;
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 0.95rem;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.btnSelecionar:hover {
+    background-color: #fff;
+
+    color: #000;
+}
+
+
+.opcaoMusica.selecionada .btnSelecionar {
+    background-color: #fff;
+
+    color: #000;
+
+    border-color: #fff;
+}
+
+
+/* ==================================================
+   BOTÃO ESCOLHER
+================================================== */
+
+.escolherFinal {
+    display: block;
+
+    width: 100%;
+
+    margin-top: 30px;
+}
+
+
+/* ==================================================
+   BOTÃO ESCOLHER DESABILITADO
+================================================== */
+
+.escolherFinal:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+}
+
+
+/* ==================================================
+   RESULTADO
+================================================== */
+
+.resultado {
+    width: 100%;
+
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* ==================================================
+   IMAGEM
+================================================== */
+
+.imagem {
+    display: block;
+
+    width: 100%;
+
+    max-width: 500px;
+
+    height: auto;
+
+    margin: 0 auto;
+}
+
+
+/* ==================================================
+   BOTÃO PRÓXIMO
+================================================== */
+
+.proximo {
+    margin-top: 30px;
+}
+
+
+/* ==================================================
+   PLACAR FINAL
+================================================== */
+
+.placar {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 70px;
+
+    margin-top: 40px;
+}
+
+
+.placar div {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.numero {
+    font-size: 3.5rem;
+
+    line-height: 1;
+}
+
+
+/* ==================================================
+   PLACAR DURANTE O JOGO
+================================================== */
+
+.placarDuranteJogo {
+    position: fixed;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 10px 25px;
+
+    border: 1px solid #333;
+
+    background-color: rgba(0, 0, 0, 0.95);
+
+    z-index: 1000;
+
+    font-size: 0.85rem;
+
+    letter-spacing: 1px;
+}
+
+
+.placarItem {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.placarNumero {
+    font-size: 1.2rem;
+
+    font-weight: 600;
+}
+
+
+.placarDivisor {
+    width: 1px;
+
+    height: 25px;
+
+    background-color: #333;
+}
+
+
+/* ==================================================
+   MENSAGEM FINAL
+================================================== */
+
+.mensagemFinal {
+    max-width: 650px;
+
+    text-align: center;
+}
+
+
+.mensagemFinal h2 {
+    margin-bottom: 35px;
+}
+
+
+.mensagemFinal p {
+    margin-bottom: 25px;
+
+    color: #ddd;
+
+    font-size: 1.05rem;
+
+    line-height: 1.9;
+}
+
+
+/* ==================================================
+   PLACAR FINAL
+================================================== */
+
+.placarFinal {
+    margin-top: 30px;
+
+    font-size: 1.2rem;
+
+    line-height: 2;
+}
+
+
+.placarFinal strong {
+    font-size: 1.4rem;
+}
+
+
+/* ==================================================
+   CELULAR
+================================================== */
+
+@media (max-width: 600px) {
+
+    .tela {
+        padding: 30px 18px;
+    }
+
+
+    .conteudo {
+        max-width: 100%;
+    }
+
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+
+    h2 {
+        font-size: 2rem;
+    }
+
+
+    .opcaoMusica {
+        padding: 20px 16px;
+    }
+
+
+    .nomeMusica {
+        font-size: 1.2rem;
+    }
+
+
+    .placar {
+        gap: 50px;
+    }
+
+
+    .numero {
+        font-size: 3rem;
+    }
+
+
+    .mensagemFinal p {
+        font-size: 1rem;
+
+        line-height: 1.8;
+    }
+
+
+    .placarDuranteJogo {
+        top: 15px;
+
+        gap: 18px;
+
+        padding: 8px 18px;
+
+        font-size: 0.75rem;
+    }
+
+
+    .placarNumero {
+        font-size: 1rem;
+    }
+
+}
