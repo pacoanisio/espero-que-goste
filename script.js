@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let musicaSelecionada = null;
 
-    let rodadaSelecionada = null;
+    let rodadaAtual = 0;
 
 
 
@@ -170,15 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnComecar =
         document.getElementById("btnComecar");
 
-    const btnProximo1 =
-        document.getElementById("btnProximo1");
-
-    const btnProximo2 =
-        document.getElementById("btnProximo2");
-
-    const btnProximo3 =
-        document.getElementById("btnProximo3");
-
     const btnEscolher1 =
         document.getElementById("btnEscolher1");
 
@@ -187,6 +178,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const btnEscolher3 =
         document.getElementById("btnEscolher3");
+
+    const btnProximo1 =
+        document.getElementById("btnProximo1");
+
+    const btnProximo2 =
+        document.getElementById("btnProximo2");
+
+    const btnProximo3 =
+        document.getElementById("btnProximo3");
 
     const btnContinuar =
         document.getElementById("btnContinuar");
@@ -197,13 +197,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       PLACAR DURANTE O JOGO
+       PLACAR
     ================================================== */
 
-    const placarDuranteJogo =
-        document.getElementById(
-            "placarDuranteJogo"
-        );
+    function atualizarPlacar() {
+
+        const elementoAcertos =
+            document.getElementById("acertos");
+
+        const elementoErros =
+            document.getElementById("erros");
+
+        const placarAcertos =
+            document.getElementById("placarAcertos");
+
+        const placarErros =
+            document.getElementById("placarErros");
+
+
+        elementoAcertos.textContent =
+            acertos;
+
+        elementoErros.textContent =
+            erros;
+
+
+        if (placarAcertos) {
+
+            placarAcertos.textContent =
+                acertos;
+
+        }
+
+
+        if (placarErros) {
+
+            placarErros.textContent =
+                erros;
+
+        }
+
+    }
 
 
 
@@ -236,94 +270,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         telas.forEach(function (elemento) {
 
-            if (elemento) {
-
-                elemento.classList.add(
-                    "escondido"
-                );
-
-            }
+            elemento.classList.add(
+                "escondido"
+            );
 
         });
 
 
-        if (tela) {
-
-            tela.classList.remove(
-                "escondido"
-            );
-
-        }
-
-    }
-
-
-
-    /* ==================================================
-       ATUALIZAR PLACAR
-    ================================================== */
-
-    function atualizarPlacar() {
-
-
-        /* PLACAR FINAL */
-
-        const placarAcertos =
-            document.getElementById(
-                "placarAcertos"
-            );
-
-        const placarErros =
-            document.getElementById(
-                "placarErros"
-            );
-
-
-
-        /* PLACAR DURANTE O JOGO */
-
-        const acertosDuranteJogo =
-            document.getElementById(
-                "acertosDuranteJogo"
-            );
-
-        const errosDuranteJogo =
-            document.getElementById(
-                "errosDuranteJogo"
-            );
-
-
-
-        if (placarAcertos) {
-
-            placarAcertos.textContent =
-                acertos;
-
-        }
-
-
-        if (placarErros) {
-
-            placarErros.textContent =
-                erros;
-
-        }
-
-
-        if (acertosDuranteJogo) {
-
-            acertosDuranteJogo.textContent =
-                acertos;
-
-        }
-
-
-        if (errosDuranteJogo) {
-
-            errosDuranteJogo.textContent =
-                erros;
-
-        }
+        tela.classList.remove(
+            "escondido"
+        );
 
     }
 
@@ -335,93 +291,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function criarRodada(numeroRodada) {
 
+        rodadaAtual =
+            numeroRodada;
+
+
+        musicaSelecionada =
+            null;
+
+
+        const numero =
+            numeroRodada + 1;
+
+
         const rodada =
             rodadas[numeroRodada];
 
 
-        const numeroTela =
-            numeroRodada + 1;
-
-
         const container =
             document.getElementById(
-                "opcoesRodada" + numeroTela
+                "opcoesRodada" + numero
             );
 
-
-        if (!container) {
-
-            return;
-
-        }
-
-
-        container.innerHTML = "";
-
-
-        /* Reseta seleção */
-
-        musicaSelecionada = null;
-
-        rodadaSelecionada = numeroRodada;
-
-
-
-        /* Limpa resultado */
 
         const resultado =
             document.getElementById(
-                "resultado" + numeroTela
+                "resultado" + numero
             );
 
 
-        if (resultado) {
-
-            resultado.innerHTML = "";
-
-        }
-
-
-
-        /* Botão ESCOLHER */
-
-        const botaoEscolher =
+        const btnEscolher =
             document.getElementById(
-                "btnEscolher" + numeroTela
+                "btnEscolher" + numero
             );
 
 
-        if (botaoEscolher) {
-
-            botaoEscolher.classList.add(
-                "escondido"
-            );
-
-            botaoEscolher.disabled = true;
-
-        }
-
-
-
-        /* Botão PRÓXIMO */
-
-        const botaoProximo =
+        const btnProximo =
             document.getElementById(
-                "btnProximo" + numeroTela
+                "btnProximo" + numero
             );
 
 
-        if (botaoProximo) {
+        /* Limpa tudo */
 
-            botaoProximo.classList.add(
-                "escondido"
-            );
+        container.innerHTML = "";
 
-        }
+        resultado.innerHTML = "";
 
 
+        /* Reseta botão ESCOLHER */
 
-        /* Cria músicas */
+        btnEscolher.classList.add(
+            "escondido"
+        );
+
+        btnEscolher.disabled =
+            true;
+
+
+        /* Esconde PRÓXIMO */
+
+        btnProximo.classList.add(
+            "escondido"
+        );
+
+
+        /* ==================================================
+           CRIA AS MÚSICAS
+        ================================================== */
 
         rodada.musicas.forEach(
             function (musica) {
@@ -472,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-                /* OUVIR */
+                /* LINK OUVIR */
 
                 const ouvir =
                     document.createElement(
@@ -501,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-                /* SELECIONAR */
+                /* BOTÃO SELECIONAR */
 
                 const selecionar =
                     document.createElement(
@@ -524,23 +460,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 selecionar.addEventListener(
                     "click",
-                    function (evento) {
-
-
-                        /*
-                         * Impede que a seleção
-                         * abra o link da música.
-                         */
-
-                        evento.stopPropagation();
-
-
+                    function () {
 
                         selecionarMusica(
                             musica,
                             bloco,
                             container,
-                            numeroTela
+                            btnEscolher
                         );
 
                     }
@@ -548,16 +474,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-                bloco.appendChild(nome);
+                /* Monta cartão */
 
-                bloco.appendChild(artista);
+                bloco.appendChild(
+                    nome
+                );
 
-                bloco.appendChild(ouvir);
+                bloco.appendChild(
+                    artista
+                );
 
-                bloco.appendChild(selecionar);
+                bloco.appendChild(
+                    ouvir
+                );
+
+                bloco.appendChild(
+                    selecionar
+                );
 
 
-                container.appendChild(bloco);
+                container.appendChild(
+                    bloco
+                );
 
             }
         );
@@ -574,25 +512,11 @@ document.addEventListener("DOMContentLoaded", function () {
         musica,
         bloco,
         container,
-        numeroTela
+        btnEscolher
     ) {
 
 
-        /* Não permite seleção depois
-           que a resposta foi confirmada */
-
-        if (
-            container.dataset.respondido ===
-            "true"
-        ) {
-
-            return;
-
-        }
-
-
-
-        /* Remove seleção dos outros */
+        /* Remove seleção anterior */
 
         const blocos =
             container.querySelectorAll(
@@ -611,44 +535,29 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-
-        /* Seleciona atual */
+        /* Marca a escolhida */
 
         bloco.classList.add(
             "selecionada"
         );
 
 
+        /* Guarda música */
+
         musicaSelecionada =
             musica;
 
 
 
-        /* Guarda rodada */
-
-        rodadaSelecionada =
-            numeroTela - 1;
-
-
-
         /* Mostra botão ESCOLHER */
 
-        const botaoEscolher =
-            document.getElementById(
-                "btnEscolher" + numeroTela
-            );
+        btnEscolher.classList.remove(
+            "escondido"
+        );
 
 
-        if (botaoEscolher) {
-
-            botaoEscolher.classList.remove(
-                "escondido"
-            );
-
-            botaoEscolher.disabled =
-                false;
-
-        }
+        btnEscolher.disabled =
+            false;
 
     }
 
@@ -661,6 +570,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function confirmarEscolha() {
 
 
+        /* Segurança */
+
         if (
             musicaSelecionada === null
         ) {
@@ -670,65 +581,60 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        const numeroTela =
-            rodadaSelecionada + 1;
+        const numero =
+            rodadaAtual + 1;
 
 
         const container =
             document.getElementById(
-                "opcoesRodada" + numeroTela
+                "opcoesRodada" + numero
             );
 
 
-        if (!container) {
-
-            return;
-
-        }
-
+        const resultado =
+            document.getElementById(
+                "resultado" + numero
+            );
 
 
-        /* Impede nova seleção */
+        const btnEscolher =
+            document.getElementById(
+                "btnEscolher" + numero
+            );
 
-        container.dataset.respondido =
-            "true";
+
+        const btnProximo =
+            document.getElementById(
+                "btnProximo" + numero
+            );
 
 
+        /* Impede novas escolhas */
 
-        const botoesSelecionar =
+        const botoes =
             container.querySelectorAll(
                 ".btnSelecionar"
             );
 
 
-        botoesSelecionar.forEach(
+        botoes.forEach(
             function (botao) {
 
-                botao.disabled = true;
+                botao.disabled =
+                    true;
 
             }
         );
 
 
-
-        /* Desabilita ESCOLHER */
-
-        const botaoEscolher =
-            document.getElementById(
-                "btnEscolher" + numeroTela
-            );
-
-
-        if (botaoEscolher) {
-
-            botaoEscolher.disabled =
-                true;
-
-        }
+        btnEscolher.disabled =
+            true;
 
 
 
-        /* Atualiza placar */
+        /* ==================================================
+           ATUALIZA PLACAR
+        ================================================== */
 
         if (
             musicaSelecionada.correta
@@ -747,30 +653,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-        /* Mostra resultado */
+        /* ==================================================
+           MOSTRA RESULTADO
+        ================================================== */
 
         mostrarResultado(
             musicaSelecionada.correta,
-            rodadaSelecionada
+            rodadaAtual,
+            resultado
         );
 
 
 
-        /* Mostra PRÓXIMO */
+        /* Mostra próximo */
 
-        const botaoProximo =
-            document.getElementById(
-                "btnProximo" + numeroTela
-            );
-
-
-        if (botaoProximo) {
-
-            botaoProximo.classList.remove(
-                "escondido"
-            );
-
-        }
+        btnProximo.classList.remove(
+            "escondido"
+        );
 
     }
 
@@ -782,31 +681,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function mostrarResultado(
         acertou,
-        numeroRodada
+        numeroRodada,
+        resultado
     ) {
 
 
-        const resultado =
-            document.getElementById(
-                "resultado" +
-                (numeroRodada + 1)
-            );
-
-
-        if (!resultado) {
-
-            return;
-
-        }
-
-
-        let imagem = "";
+        let imagem;
 
 
 
         /* RODADA 1 */
 
-        if (numeroRodada === 0) {
+        if (
+            numeroRodada === 0
+        ) {
 
             imagem =
                 acertou
@@ -819,7 +707,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* RODADA 2 */
 
-        if (numeroRodada === 1) {
+        else if (
+            numeroRodada === 1
+        ) {
 
             imagem =
                 acertou
@@ -832,7 +722,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* RODADA 3 */
 
-        if (numeroRodada === 2) {
+        else {
 
             imagem =
                 imagens.rodada3;
@@ -856,14 +746,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       SIMBORA
+       INÍCIO
     ================================================== */
 
     btnSimbora.addEventListener(
         "click",
         function () {
 
-            mostrarTela(regras);
+            mostrarTela(
+                regras
+            );
 
         }
     );
@@ -871,7 +763,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       BORA
+       COMEÇAR
     ================================================== */
 
     btnComecar.addEventListener(
@@ -879,7 +771,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function () {
 
 
-            /* Reinicia */
+            /* Zera placar */
 
             acertos = 0;
 
@@ -889,23 +781,12 @@ document.addEventListener("DOMContentLoaded", function () {
             atualizarPlacar();
 
 
-
-            /* Mostra placar */
-
-            if (placarDuranteJogo) {
-
-                placarDuranteJogo.classList.remove(
-                    "escondido"
-                );
-
-            }
-
-
-
             criarRodada(0);
 
 
-            mostrarTela(rodada1);
+            mostrarTela(
+                rodada1
+            );
 
         }
     );
@@ -967,7 +848,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             criarRodada(1);
 
-            mostrarTela(rodada2);
+
+            mostrarTela(
+                rodada2
+            );
 
         }
     );
@@ -984,7 +868,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             criarRodada(2);
 
-            mostrarTela(rodada3);
+
+            mostrarTela(
+                rodada3
+            );
 
         }
     );
@@ -999,22 +886,18 @@ document.addEventListener("DOMContentLoaded", function () {
         "click",
         function () {
 
+            /*
+             * Depois da terceira rodada,
+             * não vai direto para a mensagem.
+             *
+             * Primeiro aparece a pergunta:
+             *
+             * "Você deve estar se perguntando..."
+             */
 
-            /* Esconde placar do jogo */
-
-            if (placarDuranteJogo) {
-
-                placarDuranteJogo.classList.add(
-                    "escondido"
-                );
-
-            }
-
-
-            /* Vai para a pergunta
-               antes do resultado */
-
-            mostrarTela(final1);
+            mostrarTela(
+                final1
+            );
 
         }
     );
@@ -1022,7 +905,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       CONTINUAR - PERGUNTA FINAL
+       CONTINUAR - PERGUNTA
     ================================================== */
 
     btnContinuar.addEventListener(
@@ -1031,7 +914,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             atualizarPlacar();
 
-            mostrarTela(final2);
+
+            mostrarTela(
+                final2
+            );
 
         }
     );
@@ -1039,14 +925,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ==================================================
-       CONTINUAR - RESULTADO
+       CONTINUAR - MENSAGEM FINAL
     ================================================== */
 
     btnIrMensagem.addEventListener(
         "click",
         function () {
 
-            mostrarTela(final);
+            mostrarTela(
+                final
+            );
+
+
+            /*
+             * Garante que o vídeo comece
+             * assim que a tela final aparecer.
+             */
+
+            const video =
+                document.querySelector(
+                    ".videoFinal"
+                );
+
+
+            if (video) {
+
+                video.currentTime = 0;
+
+                video.play().catch(
+                    function () {
+                        /*
+                         * Alguns navegadores podem
+                         * bloquear autoplay.
+                         * Como o vídeo está muted,
+                         * normalmente será permitido.
+                         */
+                    }
+                );
+
+            }
 
         }
     );
