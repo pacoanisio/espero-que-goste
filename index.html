@@ -42,526 +42,462 @@
 <body>
 
 
+    <!-- ==================================================
+         PLACAR
+    ================================================== -->
+
+    <div class="placar">
+
+        <div class="placar-titulo">
+            PLACAR
+        </div>
+
+
+        <div class="acertos">
+            ✓ <span id="acertos">0</span>
+        </div>
+
+
+        <div class="erros">
+            ✕ <span id="erros">0</span>
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         JOGO
+    ================================================== -->
+
     <main class="jogo">
 
+        <div class="tela">
 
-        <!-- ==================================================
-             PLACAR DURANTE O JOGO
-        ================================================== -->
+            <div class="caixa">
 
-        <div
-            id="placarDuranteJogo"
-            class="placarDuranteJogo escondido"
-        >
 
-            <div class="placarItem">
+                <!-- ==================================================
+                     PRIMEIRA PÁGINA
+                ================================================== -->
 
-                <span
-                    class="placarNumero"
-                    id="acertosDuranteJogo"
+                <section id="inicio">
+
+                    <h1>
+                        Vamos jogar um joguinho 🎵
+                    </h1>
+
+
+                    <p>
+                        Tenho algumas músicas para você.
+                    </p>
+
+
+                    <p>
+                        Serão 3 rodadas.<br>
+                        Em cada rodada, duas músicas.
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="botao"
+                        id="btnSimbora"
+                    >
+                        SIMBORA
+                    </button>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     REGRAS
+                ================================================== -->
+
+                <section
+                    id="regras"
+                    class="escondido"
                 >
-                    0
-                </span>
 
-                <span>
-                    acertos
-                </span>
-
-            </div>
+                    <h2>
+                        Antes de começar...
+                    </h2>
 
 
-            <div class="placarDivisor"></div>
+                    <p>
+                        São 3 rodadas.
+                    </p>
 
 
-            <div class="placarItem">
+                    <p>
+                        Em cada rodada, você vai escolher
+                        entre duas músicas.
+                    </p>
 
-                <span
-                    class="placarNumero"
-                    id="errosDuranteJogo"
+
+                    <p>
+                        Uma é verdadeira.<br>
+                        A outra é falsa.
+                    </p>
+
+
+                    <p>
+                        Escolha com cuidado.
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="botao"
+                        id="btnComecar"
+                    >
+                        BORA!
+                    </button>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     RODADA 1
+                ================================================== -->
+
+                <section
+                    id="rodada1"
+                    class="escondido"
                 >
-                    0
-                </span>
 
-                <span>
-                    erros
-                </span>
+                    <div class="cabecalhoRodada">
+                        RODADA 1
+                    </div>
+
+
+                    <h2>
+                        Escolha uma.
+                    </h2>
+
+
+                    <p class="instrucao">
+                        Primeiro selecione a música.
+                        Depois clique em <strong>ESCOLHER</strong>.
+                    </p>
+
+
+                    <div
+                        id="opcoesRodada1"
+                        class="opcoes"
+                    ></div>
+
+
+                    <button
+                        type="button"
+                        class="botao escolherFinal escondido"
+                        id="btnEscolher1"
+                        disabled
+                    >
+                        ESCOLHER
+                    </button>
+
+
+                    <div
+                        id="resultado1"
+                        class="resultado"
+                    ></div>
+
+
+                    <button
+                        type="button"
+                        class="botao proximo escondido"
+                        id="btnProximo1"
+                    >
+                        PRÓXIMO
+                    </button>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     RODADA 2
+                ================================================== -->
+
+                <section
+                    id="rodada2"
+                    class="escondido"
+                >
+
+                    <div class="cabecalhoRodada">
+                        RODADA 2
+                    </div>
+
+
+                    <h2>
+                        Escolha uma.
+                    </h2>
+
+
+                    <p class="instrucao">
+                        Primeiro selecione a música.
+                        Depois clique em <strong>ESCOLHER</strong>.
+                    </p>
+
+
+                    <div
+                        id="opcoesRodada2"
+                        class="opcoes"
+                    ></div>
+
+
+                    <button
+                        type="button"
+                        class="botao escolherFinal escondido"
+                        id="btnEscolher2"
+                        disabled
+                    >
+                        ESCOLHER
+                    </button>
+
+
+                    <div
+                        id="resultado2"
+                        class="resultado"
+                    ></div>
+
+
+                    <button
+                        type="button"
+                        class="botao proximo escondido"
+                        id="btnProximo2"
+                    >
+                        PRÓXIMO
+                    </button>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     RODADA 3
+                ================================================== -->
+
+                <section
+                    id="rodada3"
+                    class="escondido"
+                >
+
+                    <div class="cabecalhoRodada">
+                        RODADA 3
+                    </div>
+
+
+                    <h2>
+                        Última rodada.
+                    </h2>
+
+
+                    <p class="instrucao">
+                        Primeiro selecione a música.
+                        Depois clique em <strong>ESCOLHER</strong>.
+                    </p>
+
+
+                    <div
+                        id="opcoesRodada3"
+                        class="opcoes"
+                    ></div>
+
+
+                    <button
+                        type="button"
+                        class="botao escolherFinal escondido"
+                        id="btnEscolher3"
+                        disabled
+                    >
+                        ESCOLHER
+                    </button>
+
+
+                    <div
+                        id="resultado3"
+                        class="resultado"
+                    ></div>
+
+
+                    <button
+                        type="button"
+                        class="botao proximo escondido"
+                        id="btnProximo3"
+                    >
+                        PRÓXIMO
+                    </button>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     PERGUNTA ANTES DA MENSAGEM
+                ================================================== -->
+
+                <section
+                    id="final1"
+                    class="escondido"
+                >
+
+                    <h2>
+                        Você deve estar se perguntando...
+                    </h2>
+
+
+                    <p class="destaque">
+                        Em que base você deveria escolher
+                        entre essas músicas?
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="botao"
+                        id="btnContinuar"
+                    >
+                        CONTINUAR
+                    </button>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     RESULTADO FINAL
+                ================================================== -->
+
+                <section
+                    id="final2"
+                    class="escondido"
+                >
+
+                    <h2>
+                        Resultado
+                    </h2>
+
+
+                    <div class="placarFinal">
+
+                        <p>
+                            Você teve
+                        </p>
+
+
+                        <p>
+                            <strong>
+                                <span id="placarAcertos">
+                                    0
+                                </span>
+                            </strong>
+
+                            acertos
+                        </p>
+
+
+                        <p>
+                            <strong>
+                                <span id="placarErros">
+                                    0
+                                </span>
+                            </strong>
+
+                            erros
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="botao proximo"
+                        id="btnIrMensagem"
+                    >
+                        CONTINUAR
+                    </button>
+
+                </section>
+
+
+
+                <!-- ==================================================
+                     MENSAGEM FINAL
+                ================================================== -->
+
+                <section
+                    id="final"
+                    class="escondido"
+                >
+
+                    <div class="mensagemFinal">
+
+
+                        <!-- VÍDEO FINAL -->
+
+                        <video
+                            class="videoFinal"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                        >
+
+                            <source
+                                src="https://github.com/user-attachments/assets/2844bd59-5565-46ec-a8d9-afe0a25861ce"
+                                type="video/mp4"
+                            >
+
+                        </video>
+
+
+
+                        <h2>
+                            Bom... chegamos ao fim do joguinho.
+                        </h2>
+
+
+                        <p>
+                            Na real, isso tudo foi só uma brincadeira.
+                            Eu só queria achar um jeito diferente de te
+                            mostrar algumas músicas e, como nosso gosto
+                            musical é bem parecido, você provavelmente já
+                            conhece uma porrada das músicas que coloquei
+                            aqui kkkkk.
+                        </p>
+
+
+                        <p>
+                            Todas as vezes que escuto essas músicas, acabo
+                            pensando e lembrando de você. É meio engraçado
+                            como algumas músicas conseguem trazer uma pessoa
+                            na cabeça da gente sem nem precisar de muito, e
+                            foi o que aconteceu com você. Acho que, de tanto
+                            ouvir, elas já vão ficar pra sempre com um
+                            pouquinho de você pra mim.
+                        </p>
+
+
+                        <p>
+                            Espero que tenha sido legal jogar.
+                            (Se pá foi o jogo mais curto da sua vida
+                            akskkakkskassa)
+                        </p>
+
+
+                    </div>
+
+                </section>
+
 
             </div>
 
         </div>
-
-
-
-        <!-- ==================================================
-             TELA INICIAL
-        ================================================== -->
-
-        <section
-            id="inicio"
-            class="tela"
-        >
-
-            <div class="conteudo">
-
-                <h1>
-                    Vamos jogar um joguinho 🎵
-                </h1>
-
-
-                <p class="subtitulo">
-                    Tenho algumas músicas para você.
-                </p>
-
-
-                <p class="descricao">
-
-                    Serão 3 rodadas.<br>
-
-                    Em cada rodada, duas músicas.
-
-                </p>
-
-
-                <button
-                    type="button"
-                    class="botao"
-                    id="btnSimbora"
-                >
-
-                    SIMBORA
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ==================================================
-             REGRAS
-        ================================================== -->
-
-        <section
-            id="regras"
-            class="tela escondido"
-        >
-
-            <div class="conteudo">
-
-                <h2>
-                    Antes de começar...
-                </h2>
-
-
-                <p>
-                    São 3 rodadas.
-                </p>
-
-
-                <p>
-                    Em cada rodada, você vai escolher
-                    entre duas músicas.
-                </p>
-
-
-                <p>
-
-                    Uma é verdadeira.<br>
-
-                    A outra é falsa.
-
-                </p>
-
-
-                <p class="destaque">
-                    Escolha com cuidado.
-                </p>
-
-
-                <button
-                    type="button"
-                    class="botao"
-                    id="btnComecar"
-                >
-
-                    BORA!
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ==================================================
-             RODADA 1
-        ================================================== -->
-
-        <section
-            id="rodada1"
-            class="tela escondido"
-        >
-
-            <div class="conteudo">
-
-
-                <div class="cabecalhoRodada">
-
-                    <span>
-                        RODADA 1
-                    </span>
-
-                </div>
-
-
-                <h2>
-                    Escolha uma.
-                </h2>
-
-
-                <div
-                    id="opcoesRodada1"
-                    class="opcoes"
-                ></div>
-
-
-                <!-- BOTÃO DE CONFIRMAÇÃO -->
-
-                <button
-                    type="button"
-                    class="botao escolherFinal escondido"
-                    id="btnEscolher1"
-                >
-
-                    ESCOLHER
-
-                </button>
-
-
-                <div
-                    id="resultado1"
-                    class="resultado"
-                ></div>
-
-
-                <button
-                    type="button"
-                    class="botao proximo escondido"
-                    id="btnProximo1"
-                >
-
-                    PRÓXIMO
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ==================================================
-             RODADA 2
-        ================================================== -->
-
-        <section
-            id="rodada2"
-            class="tela escondido"
-        >
-
-            <div class="conteudo">
-
-
-                <div class="cabecalhoRodada">
-
-                    <span>
-                        RODADA 2
-                    </span>
-
-                </div>
-
-
-                <h2>
-                    Escolha uma.
-                </h2>
-
-
-                <div
-                    id="opcoesRodada2"
-                    class="opcoes"
-                ></div>
-
-
-                <!-- BOTÃO DE CONFIRMAÇÃO -->
-
-                <button
-                    type="button"
-                    class="botao escolherFinal escondido"
-                    id="btnEscolher2"
-                >
-
-                    ESCOLHER
-
-                </button>
-
-
-                <div
-                    id="resultado2"
-                    class="resultado"
-                ></div>
-
-
-                <button
-                    type="button"
-                    class="botao proximo escondido"
-                    id="btnProximo2"
-                >
-
-                    PRÓXIMO
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ==================================================
-             RODADA 3
-        ================================================== -->
-
-        <section
-            id="rodada3"
-            class="tela escondido"
-        >
-
-            <div class="conteudo">
-
-
-                <div class="cabecalhoRodada">
-
-                    <span>
-                        RODADA 3
-                    </span>
-
-                </div>
-
-
-                <h2>
-                    Última rodada.
-                </h2>
-
-
-                <div
-                    id="opcoesRodada3"
-                    class="opcoes"
-                ></div>
-
-
-                <!-- BOTÃO DE CONFIRMAÇÃO -->
-
-                <button
-                    type="button"
-                    class="botao escolherFinal escondido"
-                    id="btnEscolher3"
-                >
-
-                    ESCOLHER
-
-                </button>
-
-
-                <div
-                    id="resultado3"
-                    class="resultado"
-                ></div>
-
-
-                <button
-                    type="button"
-                    class="botao proximo escondido"
-                    id="btnProximo3"
-                >
-
-                    PRÓXIMO
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ==================================================
-             TRANSIÇÃO ANTES DO RESULTADO
-        ================================================== -->
-
-        <section
-            id="final1"
-            class="tela escondido"
-        >
-
-            <div class="conteudo">
-
-                <h2>
-                    Você deve estar se perguntando...
-                </h2>
-
-
-                <p class="destaque">
-
-                    Em que base você deveria escolher
-                    entre essas músicas?
-
-                </p>
-
-
-                <button
-                    type="button"
-                    class="botao"
-                    id="btnContinuar"
-                >
-
-                    CONTINUAR
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ==================================================
-             RESULTADO FINAL
-        ================================================== -->
-
-        <section
-            id="final2"
-            class="tela escondido"
-        >
-
-            <div class="conteudo">
-
-                <h2>
-                    Resultado
-                </h2>
-
-
-                <div class="placar">
-
-
-                    <div>
-
-                        <span
-                            class="numero"
-                            id="placarAcertos"
-                        >
-                            0
-                        </span>
-
-                        <span>
-                            acertos
-                        </span>
-
-                    </div>
-
-
-
-                    <div>
-
-                        <span
-                            class="numero"
-                            id="placarErros"
-                        >
-                            0
-                        </span>
-
-                        <span>
-                            erros
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="botao proximo"
-                    id="btnIrMensagem"
-                >
-
-                    CONTINUAR
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ==================================================
-             MENSAGEM FINAL
-        ================================================== -->
-
-        <section
-            id="final"
-            class="tela escondido"
-        >
-
-            <div class="conteudo mensagemFinal">
-
-
-                <h2>
-                    Bom... chegamos ao fim do joguinho.
-                </h2>
-
-
-                <p>
-
-                    Na real, isso tudo foi só uma brincadeira.
-                    Eu só queria achar um jeito diferente de te
-                    mostrar algumas músicas e, como nosso gosto
-                    musical é bem parecido, você provavelmente já
-                    conhece uma porrada das músicas que coloquei
-                    aqui kkkkk.
-
-                </p>
-
-
-                <p>
-
-                    Todas as vezes que escuto essas músicas, acabo
-                    pensando e lembrando de você. É meio engraçado
-                    como algumas músicas conseguem trazer uma pessoa
-                    na cabeça da gente sem nem precisar de muito, e
-                    foi o que aconteceu com você. Acho que, de tanto
-                    ouvir, elas já vão ficar pra sempre com um
-                    pouquinho de você pra mim.
-
-                </p>
-
-
-                <p>
-
-                    Espero que tenha sido legal jogar.
-                    (Se pá foi o jogo mais curto da sua vida
-                    akskkakkskassa)
-
-                </p>
-
-
-            </div>
-
-        </section>
-
 
     </main>
 
